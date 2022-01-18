@@ -16,7 +16,7 @@ const tap = function(el,callback){
         const time = new Date().getTime() - startTime;
         const offsetX = Math.abs(touch.clientX - clientX) 
         const offsetY = Math.abs(touch.clientY - clientY)
-        if(time <150 && offsetX <15 && offsetY <15)
+        if(time <150 && offsetX <5 && offsetY <5)
         callback.call(this,e)
     })
 }
