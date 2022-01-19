@@ -1,6 +1,24 @@
-const tap = require('../utils/tap')
-tap(document.querySelector('#tap'),function(){
-    console.log(this)
-    console.log(arguments)
-    alert('这是一个tap事件')
+import * as tap from '../utils/tap'
+console.log(tap)
+tap.bind({
+    el:document.querySelector('#tap'),
+    handleFn:function(){
+        console.log(this)
+        console.log(arguments)
+        alert('这是一个定时移除的tap事件')
+    }
 })
+tap.bind({
+    el:document.querySelector('#tap2'),
+    handleFn:function(){
+        console.log(this)
+        console.log(arguments)
+        alert('这是另一个tap事件')
+    }
+})
+setTimeout(()=>{
+    console.log('事件移除了哦,别点了')
+    tap.unbind({
+        el:document.querySelector('#tap')
+    })
+},5000)

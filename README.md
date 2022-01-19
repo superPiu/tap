@@ -12,15 +12,23 @@
  类型:DOM元素
 
  
-2.callback tap事件响应的函数
+2.handleFn tap事件响应的函数
 
 类型:function
 
 ### 用法示例
 ```javascript
-tap(document.querySelector('#tap'),function(){
-    console.log(this)
-    console.log(arguments)
-    alert('这是一个tap事件')
+import * as tap from 'tap'
+tap.bind({
+    el:document.querySelector('#tap'),
+    handleFn:function(){
+        alert('这是一个tap事件')
+    }
 })
+setTimeout(()=>{
+    console.log('事件移除了哦,别点了')
+    tap.unbind({
+        el:document.querySelector('#tap')
+    })
+},5000)
 ```
